@@ -1,0 +1,12 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="create my-list ">
+    <h1>Create an Awesome new Article</h1>
+    <form action="{% url 'articles:create' %}" class="site-form article-detail" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Create Article">
+    </form>
+</div>
+{% endblock %}

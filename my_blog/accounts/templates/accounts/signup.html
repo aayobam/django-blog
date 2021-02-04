@@ -1,0 +1,12 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="my-list">
+    <h1>SIGN UP</h1>
+    <form class="site-form" action="{% url 'accounts:sign_up' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Signup">
+    </form>
+</div>
+{% endblock%}

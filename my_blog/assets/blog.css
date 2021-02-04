@@ -1,13 +1,10 @@
-body{
-    background-color: #0f121f;
-    background-image: url('background.jpg');
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: url(/static/background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: whitesmoke;
-}
-
-body *{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0 auto;
 }
 
 h1,h2,h3,h4,h5{
@@ -15,7 +12,252 @@ h1,h2,h3,h4,h5{
     margin: 0px;
 }
 
-a,a:hover,a:visited{
-    color:blue;
+a,a:hover, a:visited{
+    color:white;
     text-decoration: none;
 }
+
+.wrapper{
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.wrapper .my_home{
+    font-size: 40px;
+}
+
+.wrapper h1{
+    text-align: center;
+    margin: 100px auto;
+    font-size: 2.4em;
+}
+
+
+header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px auto;
+}
+
+/* Logged in user style */
+.user{
+    color:  #00dba0;
+    text-transform: capitalize;
+    margin-left: 12px;
+}
+
+
+/* Navbar Style */
+nav{
+    justify-self: end;
+}
+
+nav li{
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav button{
+    background: none;
+    color: white;
+    cursor: pointer;
+    border: 0px;
+    font-size: 0.91em;
+}
+
+
+/* ARTICLE LIST STYLING */
+.articles-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    margin-top: -60px;
+}
+
+.article{
+    padding: 10px;
+    border: 1px solid #00dba0;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.my-list{
+    margin-top: -70px !important;
+}
+
+.author{
+    text-transform: capitalize;
+    padding: 10px;
+    background-color: #00dba0;
+    text-align: center;
+    color: blue;
+    font-weight: bold;
+    position: absolute;
+    margin: 0;
+    bottom: 0;
+    right: 0;
+}
+
+
+.my-title{
+    text-transform:capitalize;
+}
+
+.wrapper .site-form{
+    border: 1px solid #00dba0;
+    padding: 20px;
+    margin-top: -60px;
+}
+
+.site-form input, textarea{
+    display: block;
+    margin: 15px 0 0 0;
+    padding: 10px;
+}
+
+
+.highlight{
+    border: 1px solid #00dba0;
+    border-radius: 4px;
+    padding: 5px;
+    color: #00dba0 !important;
+}
+
+.helptext, .helptext ul{
+    margin: 0 auto 20px;
+    color: rgba(245, 245, 245, 0.76);
+    font-size: 0.9em;
+    display: block;
+}
+
+.errorlist{
+    padding: 0;
+}
+
+.errorlist li{
+    padding: 10px;
+    list-style-type: none;
+    border: 1px solid #ff5722;
+    color: #ff5722;
+    margin: 10px 0;
+}
+
+.site-form input[type="submit"]{
+    background: #00dba0;
+    border: none;
+    color: blue;
+    font-size: 1.1em;
+    border-radius: 4px;
+}
+/* END OF ARTICLE LIST STYLING*/
+
+
+
+/* ARTICLE DETAILS STYLING */
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 100%;
+}
+
+.container .articles img{
+    padding-top: 30px;
+    padding-left: 40px;
+    max-width: 80%;
+    max-height: 30%;
+    height: 300px;
+}
+
+.container .articles h1{
+    padding-right: 580px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: xx-large
+}
+
+
+.article-detail .article h2{
+    
+    margin:0 auto;
+}
+
+.article-detail .article p{
+    text-align: center;
+}
+
+
+.container h1,h2,h3{
+    font-weight: bold;
+}
+
+.article-detail{
+    background-color: white;
+    margin-top: 40px;
+    color: black;
+    border-radius: 5px;
+}
+
+
+.container .articles .paragraph{
+    padding-left: 30px;
+    padding-bottom: 15px;
+}
+
+
+.comment-replies{
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+.comment-section{
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+}
+
+
+.alert-success{
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 10px 250px;
+    margin-right: 25px;
+    
+}
+/* END OF ARTICLE DETAILS STYLING */
+
+
+/* FOOTER STYLE*/
+footer{
+    text-align: center;
+    margin-top: 35px;
+}
+
+.my_footer .fab{
+    font-size: 50px !important;
+    list-style-type: none;
+    display: inline;
+    margin-left: 50px;
+}
+
+.my_footer .fa-twitter-square{
+    color: rgba(29,161,242,1.00);
+}
+
+.my_footer .fa-linkedin{
+    color: rgb(0, 115, 176)
+}
+
+.my_footer .fa-github-square{
+    color: rgba(128, 128, 128, 0.534);
+}
+
+.my_footer, p{
+    margin-left: 40px;
+}
+
+
+.authhover:hover{
+    color: #00dba0;
+}
+/* END OF FOOTER STYLING */

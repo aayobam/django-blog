@@ -4,16 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'blog.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/blog.css' %}">
+    <script src="https://kit.fontawesome.com/a9a3dfeb01.js" crossorigin="anonymous"></script>
     <title>Articles</title>
 </head>
 
 
 <body>
    <div class="wrapper">
-       <h1><a href="{% url 'articles:list' %}">ARTICLES</a></h1>
+       {% if user.is_authenticated%}
+       <header><a href="{% url 'articles:list' %}" class="my_home authhover">ARTICLES</a>
+        {% else %}
+        <header><a href="{% url 'home' %}" class="my_home authhover">ARTICLES</a>
+        {% endif %}
+       <nav>
+           <ul>
+               {% if user.is_authenticated %}
+               <li><a href="{% url 'articles:create' %}" class="highlight">New Article</a></li>
+               <li>
+                   <form class="logout-link" action="{% url 'accounts:log_out' %}" method="POST">
+                       {% csrf_token %}
+                       <li><button type="submit" class="authhover">Log Out</button></li>
+                        <li>Logged In as<div class="user">{{user}}</div></li>
+                   </form>
+               </li>
+               {% else %}
+               <li><a href="{% url 'accounts:log_in' %}" class="authhover">Login</a></li>
+               <li><a href="{% url 'accounts:sign_up' %}" class="authhover">Sign Up</a></li>
+               
+               {% endif %}
+           </ul>
+        </header>
+       </nav>
        {% block content %}
+       
        {% endblock %}
    </div>
+
+   
+   <footer>
+       <div class="my_footer">
+            <a href="https://www.twitter.com/yungelda"><i class="fab fa-twitter-square"></i></a>
+            <a href="https://www.github.com/aayobam"><i class="fab fa-github-square"></i></a>
+            <a href="https://www.linkedin.com/in/aayobam"><i class="fab fa-linkedin"></i></a>
+            <p> &copy; 2021 Blog Created and Designed By Oluwa Abayomi</p>
+       </div>
+       
+    </footer>
 </body>
 </html>

@@ -1,13 +1,55 @@
 {% extends 'base_layout.html' %}
+<title>{% block head_title %} Articles Details {% endblock %}</title>
+
+
+
 
 
 {% block content %}
-    <div class="article-details">
-        <div class="article">
-            <img src="{{article.thumb.url}}" alt="">
-            <h2> {{article.title}}</h2>
-            <p>{{article.body}}</p>
-            <p>{{article.date}}</p>
+    <div class="container">
+        <div class="article-detail articles">
+            <img src="{{articles.thumb.url}}" alt="an image should display">
+            <h1 class="">{% block title %} {{ articles.title }} {% endblock title %}</h1>
+            <div class="paragraph">
+                <p class="">{{ articles.body | safe }}</p>
+                <p class="" style="text-transform: capitalize; font-weight: bolder;">
+                    Created By - {{ articles.author }} | {{ articles.date }}
+                </p>
+            </div>
+        </div>
+      
+        <div class="article-detail">
+            <div class="comment-replies">
+                <!-- comments -->
+                <h2>{{ comments.count }} comments</h2>
+                {% for comment in comments %}
+                <div class="" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                    <b style="text-transform: capitalize;">{{ comment.name }}</b>
+                    <span class="">
+                        {{ comment.created_on }}
+                    </span>
+                    </p>
+                    {{ comment.comment_text | linebreaks }}
+                    {% csrf_token %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="article-detail comment-section">
+            {% if new_comment %}
+            <div class="alert-success">
+                Your comment is awaiting moderation
+            </div>
+            {% else %}
+            <h3>Leave a comment</h3>
+            <form method="post" style="margin-top:-15px; border: none;" class="site-form">
+                {{ comment_form.as_p}}
+                {% csrf_token %}
+                <input type="submit" value="Submit">
+            </form>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
