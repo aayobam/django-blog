@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 
 
-# users accounts signup form.
+# Users accounts signup form.
 def signup_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -17,7 +17,7 @@ def signup_view(request):
     return render(request, "accounts/signup.html", content)
 
 
-# users accounts login form.
+# Users accounts login form.
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
