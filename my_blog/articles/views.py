@@ -12,7 +12,7 @@ def article_list(request):
     return render(request, 'articles/article_list.html', content)
 
 
-# Each article detail.
+# Each article detail including comments section
 @login_required(login_url="/accounts/login")
 def article_detail(request, slug):
     template = "articles/article_detail.html"
@@ -45,15 +45,23 @@ def article_detail(request, slug):
 
 
 
-# Users articles creating section.
+# Articles creating section for registered users
 @login_required(login_url="/accounts/login")
 def article_create(request):
     if request.method == 'POST':
         form = CreatArticle(request.POST, request.FILES)
         if form.is_valid():
+            
+            # Create articles object but don't save
             instance = form.save(commit=False)
+            
+            # Assign user to the author who created an article
             instance.author = request.user
+            
+            # Save the article to the database
             instance.save()
+            
+            # Post the article to the article list page and return the article list page
             return redirect("articles:list")
     else:
         form = CreatArticle()
